@@ -1,5 +1,5 @@
 {
-  "name": "patient-registration",
+  "name": "patient-registration-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
