@@ -1,6 +1,6 @@
 import '../App.css'
 
-const Users = ({ users }) => {
+const Users = ({ users, deleteUser }) => {
     return (
         <div className="Users">
             <h1 className="users-title">Users</h1>
@@ -20,6 +20,7 @@ const Users = ({ users }) => {
                             <p>{user.addressLine2}</p>
                             <p>{user.userId}</p>
                             <p>{user.registrationTime}</p>
+                            <h4 className="delete" onClick={() => deleteUser(user.userId)}>Delete</h4>
                         </div>
                     );
                 })}

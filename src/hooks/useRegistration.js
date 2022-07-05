@@ -18,7 +18,7 @@ const useRegistration = () => {
         fetch('https://patient-registration-api.herokuapp.com/users/all')
             .then(response => response.json())
             .then(data => setUsers(data))
-            .catch(error => console.log('error fetching data: ', error));
+            .catch(error => console.log('Error fetching users: ', error))
     }, []);
 
     const submitUser = () => {
@@ -29,10 +29,19 @@ const useRegistration = () => {
         };
         fetch('https://patient-registration-api.herokuapp.com/users/add', requestOptions)
             .then(response => response.json())
-            .then(data => console.log('POST response: ', data));
-    }
+            .then(data => console.log('POST response: ', data))
+            .catch(error => console.log("Error adding user: ", error))
+        setTimeout(() => window.location.reload(false), 1000);
+    };
 
-    return { newUser, setNewUser, submitUser, users }
+    const deleteUser = (id) => {
+        fetch(`https://patient-registration-api.herokuapp.com/users/remove/${id}`, { method: 'DELETE' })
+            .then(() => {})
+            .catch(error => console.log("Error deleting user: ", error))
+        setTimeout(() => window.location.reload(false), 1000);
+    };
+
+    return { newUser, setNewUser, submitUser, deleteUser, users }
 }
 
 export default useRegistration;
