@@ -4,12 +4,32 @@
     justify-content: center;
     align-items: center;
 }
+
+.RegistrationForm {
+    width: 30%;
+}
+
 .form {
     display: flex;
     flex-direction: column;
-    width: 20%;
 }
 
 input {
+    margin: 16px;
+}
+
+.users-title {
+    text-align: center;
+}
+
+.users-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.user {
+    border: 1px solid lightgray;
+    padding: 16px;
     margin: 16px;
 }
