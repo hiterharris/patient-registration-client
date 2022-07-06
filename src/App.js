@@ -1,6 +1,6 @@
+import { Routes, Route } from "react-router-dom";
 import useRegistration from './hooks/useRegistration';
-import { RegistrationForm, Users } from './components';
-
+import { RegistrationForm, Login, Users } from './components';
 import './App.css';
 
 const App = () => {
@@ -8,8 +8,11 @@ const App = () => {
 
   return (
     <div className="App">
-        <RegistrationForm newUser={newUser} setNewUser={setNewUser} submitUser={submitUser}  />
-        <Users users={users} deleteUser={deleteUser} />
+        <Routes>
+          <Route path="/" element={<RegistrationForm newUser={newUser} setNewUser={setNewUser} submitUser={submitUser}  />} />
+          <Route path="login" element={<Login />} />
+          <Route path="admin" element={<Users users={users} deleteUser={deleteUser} />} />
+      </Routes>
     </div>
   );
 }
