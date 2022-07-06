@@ -15,7 +15,7 @@ const useRegistration = () => {
     });
 
     useEffect(() => {
-        fetch('https://patient-registration-api.herokuapp.com/users/all')
+        fetch('https://patient-registration-api.herokuapp.com/api/users/all')
             .then(response => response.json())
             .then(data => setUsers(data))
             .catch(error => console.log('Error fetching users: ', error))
@@ -27,7 +27,7 @@ const useRegistration = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newUser)
         };
-        fetch('https://patient-registration-api.herokuapp.com/users/add', requestOptions)
+        fetch('https://patient-registration-api.herokuapp.com/api/users/add', requestOptions)
             .then(response => response.json())
             .then(data => console.log('POST response: ', data))
             .catch(error => console.log("Error adding user: ", error))
@@ -35,7 +35,7 @@ const useRegistration = () => {
     };
 
     const deleteUser = (id) => {
-        fetch(`https://patient-registration-api.herokuapp.com/users/remove/${id}`, { method: 'DELETE' })
+        fetch(`https://patient-registration-api.herokuapp.com/api/users/remove/${id}`, { method: 'DELETE' })
             .then(() => {})
             .catch(error => console.log("Error deleting user: ", error))
         setTimeout(() => window.location.reload(false), 1000);

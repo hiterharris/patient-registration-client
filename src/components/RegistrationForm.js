@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import '../App.css';
 
 const RegistrationForm = ({ newUser, setNewUser, submitUser }) => {
@@ -31,7 +32,7 @@ const RegistrationForm = ({ newUser, setNewUser, submitUser }) => {
                 </div>
             </form>
             <button type="submit" className="submit-button" onClick={() => submitUser()}>Submit</button>
-            <p className="account">Already have an account? <a href="/" className="login"> Login</a></p>
+            <span className="account">Already have an account? <Link className="login-link" to="/login">Login</Link></span>            
         </div>
     );
 }
