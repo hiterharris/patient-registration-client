@@ -4,10 +4,10 @@
     justify-content: center;
     align-items: center;
     font-family: 'Avenir Next';
-
 }
 
 .RegistrationForm {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,6 +17,7 @@
 }
 
 form {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,11 +25,11 @@ form {
 }
 
 .input-field {
-    width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 16px;
+    width: 30%;
 }
 
 label {
