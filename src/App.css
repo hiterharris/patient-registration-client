@@ -57,6 +57,12 @@ input {
     cursor: pointer;
 }
 
+.Users {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .users-title {
     text-align: center;
 }

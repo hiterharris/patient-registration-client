@@ -1,6 +1,8 @@
+import useAuth from '../hooks/useAuth';
 import '../App.css'
 
 const Users = ({ users, deleteUser }) => {
+    const { submitLogout } = useAuth();
     return (
         <div className="Users">
             <h1 className="users-title">Users</h1>
@@ -25,6 +27,7 @@ const Users = ({ users, deleteUser }) => {
                     );
                 })}
             </div>
+            <span className="register-link" onClick={submitLogout}>Logout</span>   
         </div>
     );
 }
