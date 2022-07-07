@@ -22,6 +22,7 @@ const Users = ({ users, deleteUser }) => {
                             <p>{user.addressLine2}</p>
                             <p>{user.userId}</p>
                             <p>{user.registrationTime}</p>
+                            <img className="selected-file" src={`https://hh-image-upload.s3.amazonaws.com/${user.photoId}`} alt="selected file" />
                             <h4 className="delete" onClick={() => deleteUser(user.userId)}>Delete</h4>
                         </div>
                     );

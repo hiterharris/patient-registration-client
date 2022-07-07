@@ -1,7 +1,9 @@
+import { ImageUpload } from '../components';
 import { Link } from "react-router-dom";
 import '../App.css';
 
 const RegistrationForm = ({ newUser, setNewUser, submitUser }) => {
+
     return (
         <div className="RegistrationForm">
             <h1>Register</h1>
@@ -29,6 +31,9 @@ const RegistrationForm = ({ newUser, setNewUser, submitUser }) => {
                 </div>
                 <div className="input-field">
                     <input type="text" placeholder="Zip Code" name="zip" onChange={(event) => setNewUser({ ...newUser, zip: event.target.value})} />
+                </div>
+                <div className="input-field">
+                    <ImageUpload newUser={newUser} setNewUser={setNewUser} />
                 </div>
             </form>
             <button type="submit" className="submit-button" onClick={() => submitUser()}>Submit</button>

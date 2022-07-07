@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import AWS from 'aws-sdk';
 
 const useRegistration = () => {
     const [users, setUsers] = useState([]);
@@ -13,6 +14,39 @@ const useRegistration = () => {
         zip: '',
         photoId: ''
     });
+    const [setProgress] = useState(0);
+
+    const S3_BUCKET ='patient-registration';
+    const REGION ='us-east-1';
+
+
+    AWS.config.update({
+        accessKeyId: 'AKIATGNV47JAWN5IE6A5',
+        secretAccessKey: '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'
+    });
+
+    const myBucket = new AWS.S3({
+        params: { Bucket: S3_BUCKET},
+        region: REGION,
+    })
+
+    const uploadFile = (file) => {
+
+        const params = {
+            ACL: 'public-read',
+            Body: file,
+            Bucket: S3_BUCKET,
+            Key: newUser.photoId
+        };
+
+        myBucket.putObject(params)
+            .on('httpUploadProgress', (evt) => {
+                setProgress(Math.round((evt.loaded / evt.total) * 100))
+            })
+            .send((err) => {
+                if (err) console.log(err);
+            })
+    };
 
     useEffect(() => {
         fetch('https://patient-registration-api.herokuapp.com/api/users/all')
@@ -21,7 +55,8 @@ const useRegistration = () => {
             .catch(error => console.log('Error fetching users: ', error))
     }, []);
 
-    const submitUser = () => {
+    const submitUser = (file) => {
+        uploadFile(file);
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

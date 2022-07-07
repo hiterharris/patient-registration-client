@@ -4,7 +4,7 @@ import { RegistrationForm, Login, Users } from './components';
 import './App.css';
 
 const App = () => {
-  const { newUser, setNewUser, submitUser, deleteUser, users } = useRegistration()
+  const { newUser, setNewUser, submitUser, deleteUser, users } = useRegistration();
 
   return (
     <div className="App">

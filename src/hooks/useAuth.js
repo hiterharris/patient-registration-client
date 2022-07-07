@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 const useAuth = () => {
     const [login, setLogin] = useState({ userName: '', password: ''});
-    const [setSession] = useState('');
+    const [session, setSession] = useState('');
     let navigate = useNavigate();
 
     const submitLogin = () => {
@@ -14,10 +14,13 @@ const useAuth = () => {
         };
         fetch('https://patient-registration-api.herokuapp.com/api/auth/login', requestOptions)
             .then(response => response.json())
-            .then(data => setSession(data.OK.sessionId))
-            .then(  navigate("../admin", { replace: true }))
+            .then(data => setSession(data?.OK?.sessionId))
             .catch(error => console.log("Error adding user: ", error))
     };
+
+    useEffect(() => {
+        session && setTimeout(() => navigate("../admin", { replace: true }), 1000)
+    }, [session, navigate]);
 
     const submitLogout = () => {
         const requestOptions = {
@@ -27,6 +30,7 @@ const useAuth = () => {
         };
         fetch('https://patient-registration-api.herokuapp.com/api/auth/logout', requestOptions)
             .then(response => response.json())
+            .then(setSession({}))
             .then(navigate("../login", { replace: true }))
             .catch(error => console.log("Error adding user: ", error))
     };

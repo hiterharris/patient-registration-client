@@ -39,7 +39,7 @@ label {
 input {
     border: none;
     height: 36px;
-    width: 80%;
+    width: 100%;
     border-radius: 8px;
     border: 0.5px solid lightgrey;
     box-shadow: 2px 5px 5px lightgrey;
@@ -92,4 +92,29 @@ input {
 .login-link, .register-link {
     color: red;
     cursor: pointer;
+}
+
+.ImageUpload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.file-input {
+    padding: 8px 0 0 8px;
+    height: 32px;
+    cursor: pointer;
+    box-shadow: none;
+    border: none;
+}
+
+.selected-file {
+    width: 20%;
+}
+
+@media screen and (max-width: 1024px) {
+    .input-field {
+        width: 70%;
+    }
 }
