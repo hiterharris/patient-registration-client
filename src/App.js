@@ -5,7 +5,6 @@ import './App.css';
 
 const App = () => {
   const { newUser, setNewUser, submitUser, deleteUser, users } = useRegistration();
-
   return (
     <div className="App">
         <Routes>

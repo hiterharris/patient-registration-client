@@ -16,13 +16,12 @@ const useRegistration = () => {
     });
     const [setProgress] = useState(0);
 
-    const S3_BUCKET ='patient-registration';
-    const REGION ='us-east-1';
-
+    const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
+    const REGION = process.env.REACT_APP_REGION;
 
     AWS.config.update({
-        accessKeyId: 'AKIATGNV47JAWN5IE6A5',
-        secretAccessKey: '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'
+        accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
+        secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY
     });
 
     const myBucket = new AWS.S3({
