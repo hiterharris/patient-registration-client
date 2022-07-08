@@ -14,7 +14,7 @@ const useRegistration = () => {
         zip: '',
         photoId: ''
     });
-    const [setProgress] = useState(0);
+    const [progress, setProgress] = useState(0);
 
     const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
     const REGION = process.env.REACT_APP_REGION;
@@ -30,12 +30,12 @@ const useRegistration = () => {
     })
 
     const uploadFile = (file) => {
-
+        console.log('file: ', file)
         const params = {
             ACL: 'public-read',
             Body: file,
             Bucket: S3_BUCKET,
-            Key: newUser.photoId
+            Key: file.name
         };
 
         myBucket.putObject(params)
@@ -43,7 +43,8 @@ const useRegistration = () => {
                 setProgress(Math.round((evt.loaded / evt.total) * 100))
             })
             .send((err) => {
-                if (err) console.log(err);
+                if (err) console.log(err)
+                else console.log(progress)
             })
     };
 

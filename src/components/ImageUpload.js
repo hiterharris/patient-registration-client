@@ -1,8 +1,7 @@
-import React ,{ useState } from 'react';
+import React from 'react';
 import '../App.css';
 
-const ImageUpload = ({ newUser, setNewUser }) => {
-    const [setSelectedFile] = useState(null);
+const ImageUpload = ({ newUser, setNewUser, setSelectedFile }) => {
 
     const handleFileInput = (e) => {
         setNewUser({...newUser, photoId: e.target.files[0].name});

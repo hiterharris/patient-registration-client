@@ -1,9 +1,11 @@
+import React, { useState } from 'react';
 import { ImageUpload } from '../components';
 import { Link } from "react-router-dom";
 import '../App.css';
 
 const RegistrationForm = ({ newUser, setNewUser, submitUser }) => {
-
+    const [selectedFile, setSelectedFile] = useState();
+    
     return (
         <div className="RegistrationForm">
             <h1>Register</h1>
@@ -33,10 +35,10 @@ const RegistrationForm = ({ newUser, setNewUser, submitUser }) => {
                     <input type="text" placeholder="Zip Code" name="zip" onChange={(event) => setNewUser({ ...newUser, zip: event.target.value})} />
                 </div>
                 <div className="input-field">
-                    <ImageUpload newUser={newUser} setNewUser={setNewUser} />
+                    <ImageUpload newUser={newUser} setNewUser={setNewUser} selectedFile={selectedFile} setSelectedFile={setSelectedFile} />
                 </div>
             </form>
-            <button type="submit" className="submit-button" onClick={() => submitUser()}>Submit</button>
+            <button type="submit" className="submit-button" onClick={() => submitUser(selectedFile)}>Submit</button>
             <span className="account">Already have an account? <Link className="login-link" to="/login">Login</Link></span>            
         </div>
     );
