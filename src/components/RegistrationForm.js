@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ImageUpload } from '../components';
+import { ImageUpload, DateInput } from '../components';
 import { Link } from "react-router-dom";
 import '../App.css';
 
@@ -11,34 +11,34 @@ const RegistrationForm = ({ newUser, setNewUser, submitUser }) => {
             <h1>Register</h1>
             <form>
                 <div className="input-field">
-                    <input type="text" placeholder="Name" name="name" onChange={(event) => setNewUser({ ...newUser, name: event.target.value})} />
+                    <input type="text" required placeholder="Name" name="name" onChange={(event) => { event.target.value.length > 1 && setNewUser({ ...newUser, name: event.target.value})}} />
                 </div>
                 <div className="input-field">
-                    <input type="text" placeholder="Date of Birth" name="dateOfBirth" onChange={(event) => setNewUser({ ...newUser, dateOfBirth: event.target.value})} />
+                    <DateInput newUser={newUser} setNewUser={setNewUser} />
                 </div>
                 <div className="input-field">
-                    <input type="text" placeholder="Phone Number" name="phone" onChange={(event) => setNewUser({ ...newUser, phone: event.target.value})} />
+                    <input type="text" required maxLength={14} placeholder="Phone (123) 456-7890" name="phone" onChange={(event) => setNewUser({ ...newUser, phone: event.target.value})} />
                 </div>
                 <div className="input-field">
-                    <input type="text" placeholder="Email Address" name="email" onChange={(event) => setNewUser({ ...newUser, email: event.target.value})} />
+                    <input type="email" required placeholder="Email Address" name="email" onChange={(event) => setNewUser({ ...newUser, email: event.target.value})} />
                 </div>
                 <div className="input-field">
-                    <input type="text" placeholder="Address" name="addressLine1" onChange={(event) => setNewUser({ ...newUser, addressLine1: event.target.value})} />
+                    <input type="text" required placeholder="Address" name="addressLine1" onChange={(event) => setNewUser({ ...newUser, addressLine1: event.target.value})} />
                 </div>
                 <div className="input-field">
-                    <input type="text" placeholder="City" name="city" onChange={(event) => setNewUser({ ...newUser, city: event.target.value})} />
+                    <input type="text" required placeholder="City" name="city" onChange={(event) => setNewUser({ ...newUser, city: event.target.value})} />
                 </div>
                 <div className="input-field">
-                    <input type="text" placeholder="State" name="state" onChange={(event) => setNewUser({ ...newUser, state: event.target.value})} />
+                    <input type="text" required maxLength={2} placeholder="State" name="state"  onChange={(event) => setNewUser({ ...newUser, state: event.target.value})} />
                 </div>
                 <div className="input-field">
-                    <input type="text" placeholder="Zip Code" name="zip" onChange={(event) => setNewUser({ ...newUser, zip: event.target.value})} />
+                    <input type="text" required maxLength={5} placeholder="Zip Code" name="zip" onChange={(event) => setNewUser({ ...newUser, zip: event.target.value})} />
                 </div>
                 <div className="input-field">
                     <ImageUpload newUser={newUser} setNewUser={setNewUser} selectedFile={selectedFile} setSelectedFile={setSelectedFile} />
                 </div>
+                <button type="submit" className="submit-button" onClick={() => submitUser(selectedFile)}>Submit</button>
             </form>
-            <button type="submit" className="submit-button" onClick={() => submitUser(selectedFile)}>Submit</button>
             <span className="account">Already have an account? <Link className="login-link" to="/login">Login</Link></span>            
         </div>
     );
