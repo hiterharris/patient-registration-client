@@ -5,8 +5,6 @@ import '../App.css';
 
 const RegistrationForm = ({ newUser, setNewUser, submitUser }) => {
     const [selectedFile, setSelectedFile] = useState();
-
-    console.log(newUser);
     
     return (
         <div className="RegistrationForm">
@@ -19,10 +17,10 @@ const RegistrationForm = ({ newUser, setNewUser, submitUser }) => {
                     <DateInput newUser={newUser} setNewUser={setNewUser} />
                 </div>
                 <div className="input-field">
-                    <input type="text" required placeholder="Phone Number" name="phone" onChange={(event) => setNewUser({ ...newUser, phone: event.target.value})} />
+                    <input type="text" required maxLength={14} placeholder="Phone (123) 456-7890" name="phone" onChange={(event) => setNewUser({ ...newUser, phone: event.target.value})} />
                 </div>
                 <div className="input-field">
-                    <input type="text" required placeholder="Email Address" name="email" onChange={(event) => setNewUser({ ...newUser, email: event.target.value})} />
+                    <input type="email" required placeholder="Email Address" name="email" onChange={(event) => setNewUser({ ...newUser, email: event.target.value})} />
                 </div>
                 <div className="input-field">
                     <input type="text" required placeholder="Address" name="addressLine1" onChange={(event) => setNewUser({ ...newUser, addressLine1: event.target.value})} />
@@ -31,10 +29,10 @@ const RegistrationForm = ({ newUser, setNewUser, submitUser }) => {
                     <input type="text" required placeholder="City" name="city" onChange={(event) => setNewUser({ ...newUser, city: event.target.value})} />
                 </div>
                 <div className="input-field">
-                    <input type="text" required placeholder="State" name="state" onChange={(event) => setNewUser({ ...newUser, state: event.target.value})} />
+                    <input type="text" required maxLength={2} placeholder="State" name="state"  onChange={(event) => setNewUser({ ...newUser, state: event.target.value})} />
                 </div>
                 <div className="input-field">
-                    <input type="text" required placeholder="Zip Code" name="zip" onChange={(event) => setNewUser({ ...newUser, zip: event.target.value})} />
+                    <input type="text" required maxLength={5} placeholder="Zip Code" name="zip" onChange={(event) => setNewUser({ ...newUser, zip: event.target.value})} />
                 </div>
                 <div className="input-field">
                     <ImageUpload newUser={newUser} setNewUser={setNewUser} selectedFile={selectedFile} setSelectedFile={setSelectedFile} />
