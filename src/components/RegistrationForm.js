@@ -39,7 +39,7 @@ const RegistrationForm = ({ newUser, setNewUser, submitUser }) => {
                 </div>
                 <button type="submit" className="submit-button" onClick={() => submitUser(selectedFile)}>Submit</button>
             </form>
-            <span className="account">Already have an account? <Link className="login-link" to="/login">Login</Link></span>            
+            <span className="account">Are you an admin? <Link className="login-link" to="/login">Login</Link></span>            
         </div>
     );
 }

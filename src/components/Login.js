@@ -16,7 +16,7 @@ const Login = () => {
                 </div>
             </form>
             <button type="submit" className="submit-button" onClick={submitLogin}>Login</button>
-            <span className="account">Don't have an account? <Link className="register-link" to="/">Register</Link></span>   
+            <span className="account">Are you a new patient? <Link className="register-link" to="/">Register</Link></span>   
         </div>
     );
 }
