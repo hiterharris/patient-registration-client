@@ -34,4 +34,4 @@ Production and QA environmens are deployed using [Netlify](https://www.netlify.c
 
 <img width="1787" alt="Login" src="https://user-images.githubusercontent.com/25600140/178057904-3fcc6831-ab49-47b5-adeb-a95af18786f7.png">
 
-<img width="1789" alt="Patients" src="https://user-images.githubusercontent.com/25600140/178057914-1ca3cd90-e357-4842-922d-445057079927.png">
+<img width="1789" alt="Patients" src="https://user-images.githubusercontent.com/25600140/178067113-50dd3d03-838b-4862-ac37-232893b79687.png">
