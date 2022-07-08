@@ -2,7 +2,7 @@
 
 This site was built using React for the front-end and Node for the back-end.  It also use AWS DynamoDB and S3 for database management.
 
-[Production Link](https://patient-registration.netlify.app/)
+Production Link: [https://patient-registration.netlify.app/](https://patient-registration.netlify.app/)
 
 ## Getting Started
 
