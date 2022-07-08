@@ -3,6 +3,12 @@ import '../App.css'
 
 const Users = ({ users, deleteUser }) => {
     const { submitLogout } = useAuth();
+
+    const handleDelete = (user) => {
+        deleteUser(user.userId);
+        setTimeout(() => window.location.reload(true), 1000);
+    }
+
     return (
         <div className="Users">
             <h1 className="users-title">Users</h1>
@@ -23,7 +29,7 @@ const Users = ({ users, deleteUser }) => {
                             <p>{user.userId}</p>
                             <p>{user.registrationTime}</p>
                             <img className="selected-file" src={`https://patient-registration.s3.amazonaws.com/${user?.photoId}`} alt="selected file" />
-                            <h4 className="delete" onClick={() => deleteUser(user.userId)}>Delete</h4>
+                            <h4 className="delete" onClick={() => handleDelete(user)}>Delete</h4>
                         </div>
                     );
                 })}
