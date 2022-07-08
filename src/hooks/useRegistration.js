@@ -63,11 +63,13 @@ const useRegistration = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newUser)
         };
-        fetch('https://patient-registration-api.herokuapp.com/api/users/add', requestOptions)
+        setTimeout(() => {
+            fetch('https://patient-registration-api.herokuapp.com/api/users/add', requestOptions)
             .then(response => response.json())
             .then(data => console.log('POST response: ', data))
             .catch(error => console.log("Error adding user: ", error))
-        setTimeout(() => window.location.reload(false), 2000);
+        }, 1000)
+        setTimeout(() => window.location.reload(false), 1000);
     };
 
     const deleteUser = (id) => {
