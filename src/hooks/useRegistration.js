@@ -68,7 +68,7 @@ const useRegistration = () => {
             .then(response => response.json())
             .then(data => console.log('POST response: ', data))
             .catch(error => console.log("Error adding user: ", error))
-        }, 1000)
+        }, 2000)
         setTimeout(() => window.location.reload(false), 1000);
     };
 
