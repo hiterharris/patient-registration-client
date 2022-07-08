@@ -6,11 +6,11 @@ This site was built using React for the front-end and Node for the back-end.  It
 
 After cloning the repo, you can run:
 
-### `npm install`
+`npm install`
 
 then
 
-### `npm start`
+`npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
