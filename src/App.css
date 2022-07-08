@@ -80,6 +80,14 @@ input {
     width: 28vw;
 }
 
+.user span {
+    font-weight: bold;
+}
+
+.user-address p {
+    margin: 0 0 0 16px;
+}
+
 .delete {
     color: red;
     cursor: pointer;

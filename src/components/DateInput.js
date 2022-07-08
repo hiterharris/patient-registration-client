@@ -3,9 +3,17 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const DateInput = ({ newUser, setNewUser }) => {
-  const [defaultDate, setDefaultDate] = useState(new Date());
+  const [displayDate, setDisplayDate] = useState('');
+
   return (
-    <DatePicker selected={defaultDate} onChange={(date) => { setDefaultDate(date); setNewUser({ ...newUser, dateOfBirth: date})} } />
+    <DatePicker
+      placeholderText="Date of Birth"
+      selected={displayDate}
+      onChange={(date) => {
+        setDisplayDate(date);
+        setNewUser({ ...newUser, dateOfBirth: date})}
+      }
+      />
   );
 };
 

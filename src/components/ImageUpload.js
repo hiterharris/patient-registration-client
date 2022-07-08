@@ -11,7 +11,7 @@ const ImageUpload = ({ newUser, setNewUser, setSelectedFile }) => {
     return (
         <div className="ImageUpload">
             <p className="photo-label">Photo:</p>
-            <input type="file" className="file-input" onChange={(e) => handleFileInput(e)} />
+            <input type="file" required className="file-input" onChange={(e) => handleFileInput(e)} />
         </div>
     );
 }
