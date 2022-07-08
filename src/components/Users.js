@@ -5,7 +5,7 @@ const Users = ({ users }) => {
     const { submitLogout } = useAuth();
     return (
         <div className="Users">
-            <h1 className="users-title">Users</h1>
+            <h1 className="users-title">Patients</h1>
             <div className="users-list">
                 {users.map((user, index) => {
                     return (
