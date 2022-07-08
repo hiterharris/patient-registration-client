@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ImageUpload } from '../components';
+import { ImageUpload, DateInput } from '../components';
 import { Link } from "react-router-dom";
 import '../App.css';
 
@@ -14,7 +14,7 @@ const RegistrationForm = ({ newUser, setNewUser, submitUser }) => {
                     <input type="text" placeholder="Name" name="name" onChange={(event) => setNewUser({ ...newUser, name: event.target.value})} />
                 </div>
                 <div className="input-field">
-                    <input type="text" placeholder="Date of Birth" name="dateOfBirth" onChange={(event) => setNewUser({ ...newUser, dateOfBirth: event.target.value})} />
+                    <DateInput newUser={newUser} setNewUser={setNewUser} />
                 </div>
                 <div className="input-field">
                     <input type="text" placeholder="Phone Number" name="phone" onChange={(event) => setNewUser({ ...newUser, phone: event.target.value})} />
