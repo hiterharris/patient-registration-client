@@ -25,3 +25,11 @@ password: `done!`
 ## Deployment
 
 Production and QA environmens are deployed using [Netlify](https://www.netlify.com/)
+
+## Screenshots:
+
+<img width="1791" alt="Register" src="https://user-images.githubusercontent.com/25600140/178057893-311c9431-95dc-4827-b93c-6195d3a8a2dd.png">
+
+<img width="1787" alt="Login" src="https://user-images.githubusercontent.com/25600140/178057904-3fcc6831-ab49-47b5-adeb-a95af18786f7.png">
+
+<img width="1789" alt="Patients" src="https://user-images.githubusercontent.com/25600140/178057914-1ca3cd90-e357-4842-922d-445057079927.png">
