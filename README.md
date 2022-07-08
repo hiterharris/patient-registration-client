@@ -24,6 +24,17 @@ To login as an admin, use the following credentials:
 username: `admin`
 password: `done!`
 
+## NOTE
+
+Inorder to connect to the database, you will need to have the following credientials stored in a `.env` file
+
+`
+REACT_APP_S3_BUCKET=
+REACT_APP_REGION=us-east-1
+REACT_APP_ACCESS_KEY_ID=
+REACT_APP_SECRET_ACCESS_KEY=
+`
+
 ## Deployment
 
 Production and QA environmens are deployed using [Netlify](https://www.netlify.com/)
