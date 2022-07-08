@@ -69,7 +69,7 @@ const useRegistration = () => {
             .then(data => console.log('POST response: ', data))
             .catch(error => console.log("Error adding user: ", error))
         }, 2000)
-        setTimeout(() => window.location.reload(false), 1000);
+        setTimeout(() => window.location.reload(false), 2000);
     };
 
     const deleteUser = (id) => {
