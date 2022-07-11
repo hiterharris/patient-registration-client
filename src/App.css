@@ -127,4 +127,8 @@ input {
     .input-field {
         width: 50%;
     }
+    .user {
+        width: 75vw;
+        font-size: 12px;
+    }
 }
