@@ -1,13 +1,22 @@
+import { useEffect } from 'react';
 import useAuth from '../hooks/useAuth';
+import { useNavigate } from "react-router-dom";
 import '../App.css'
 
 const Users = ({ users, deleteUser }) => {
+    let navigate = useNavigate();
     const { submitLogout } = useAuth();
 
     const handleDelete = (user) => {
         deleteUser(user.userId);
         setTimeout(() => window.location.reload(true), 1000);
     }
+
+    const session = window.sessionStorage.sessionId;
+
+    useEffect(() => {
+        session === '' && navigate("../login", { replace: true })
+    }, [navigate, session]);
 
     return (
         <div className="Users">

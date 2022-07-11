@@ -4,6 +4,7 @@ import '../App.css';
 
 const Login = () => {
     const { login, setLogin, submitLogin } = useAuth();
+
     return (
         <div className="Login">
             <h1>Login</h1>
@@ -14,8 +15,8 @@ const Login = () => {
                 <div className="input-field">
                     <input type="text" placeholder="Password" name="password" onChange={e => setLogin({...login, password: e.target.value})} />
                 </div>
+                <button type="submit" className="submit-button" onClick={submitLogin}>Login</button>
             </form>
-            <button type="submit" className="submit-button" onClick={submitLogin}>Login</button>
             <span className="account">Are you a new patient? <Link className="register-link" to="/">Register</Link></span>   
         </div>
     );

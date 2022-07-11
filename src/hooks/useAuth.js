@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 const useAuth = () => {
     const [login, setLogin] = useState({ userName: '', password: ''});
-    const [session, setSession] = useState('');
     let navigate = useNavigate();
 
-    const submitLogin = () => {
+    const submitLogin = (e) => {
+        e.preventDefault();
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -14,13 +14,9 @@ const useAuth = () => {
         };
         fetch('https://patient-registration-api.herokuapp.com/api/auth/login', requestOptions)
             .then(response => response.json())
-            .then(data => setSession(data?.OK?.sessionId))
+            .then(data => { sessionStorage.setItem("sessionId", data?.OK?.sessionId); setTimeout(() => navigate("../admin", { replace: true }), 1000) })
             .catch(error => console.log("Error adding user: ", error))
     };
-
-    useEffect(() => {
-        session && setTimeout(() => navigate("../admin", { replace: true }), 1000)
-    }, [session, navigate]);
 
     const submitLogout = () => {
         const requestOptions = {
@@ -30,7 +26,7 @@ const useAuth = () => {
         };
         fetch('https://patient-registration-api.herokuapp.com/api/auth/logout', requestOptions)
             .then(response => response.json())
-            .then(setSession({}))
+            .then(sessionStorage.setItem("sessionId", ''))
             .then(navigate("../login", { replace: true }))
             .catch(error => console.log("Error adding user: ", error))
     };
