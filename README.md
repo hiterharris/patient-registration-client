@@ -28,12 +28,13 @@ password: `done!`
 
 Inorder to connect to the database, you will need to have the following credientials stored in a `.env` file
 
-`
-REACT_APP_S3_BUCKET=
-REACT_APP_REGION=
-REACT_APP_ACCESS_KEY_ID=
-REACT_APP_SECRET_ACCESS_KEY=
-`
+`REACT_APP_S3_BUCKET=`
+
+`REACT_APP_REGION=`
+
+`REACT_APP_ACCESS_KEY_ID=`
+
+`REACT_APP_SECRET_ACCESS_KEY=`
 
 ## Deployment
 
