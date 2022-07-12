@@ -30,7 +30,7 @@ Inorder to connect to the database, you will need to have the following credient
 
 `
 REACT_APP_S3_BUCKET=
-REACT_APP_REGION=us-east-1
+REACT_APP_REGION=
 REACT_APP_ACCESS_KEY_ID=
 REACT_APP_SECRET_ACCESS_KEY=
 `
