@@ -17,7 +17,6 @@ const useRegistration = () => {
     const [progress, setProgress] = useState(0);
     const [selectedFile, setSelectedFile] = useState();
 
-
     const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
     const REGION = process.env.REACT_APP_REGION;
 

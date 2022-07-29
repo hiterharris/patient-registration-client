@@ -1,11 +1,26 @@
+import { useEffect } from 'react';
 import useAuth from '../hooks/useAuth';
+import { useNavigate } from "react-router-dom";
 import '../App.css'
 
-const Users = ({ users }) => {
+const Users = ({ users, deleteUser }) => {
+    let navigate = useNavigate();
     const { submitLogout } = useAuth();
+
+    const handleDelete = (user) => {
+        deleteUser(user.userId);
+        setTimeout(() => window.location.reload(true), 1000);
+    }
+
+    const session = window.sessionStorage.sessionId;
+
+    useEffect(() => {
+        session === '' && navigate("../login", { replace: true })
+    }, [navigate, session]);
+
     return (
         <div className="Users">
-            <h1 className="users-title">Patients</h1>
+            <h1 className="users-title">Users</h1>
             <div className="users-list">
                 {users.map((user, index) => {
                     return (
@@ -24,6 +39,7 @@ const Users = ({ users }) => {
                             <p><span>Date Created: </span>{user.registrationTime.slice(0, -29)}</p>
                             <span>Photo ID:</span><br />
                             <img className="selected-file" src={`https://patient-registration.s3.amazonaws.com/${user?.photoId}`} alt="selected file" />
+                            <h4 className="delete" onClick={() => handleDelete(user)}>Delete</h4>
                         </div>
                     );
                 })}

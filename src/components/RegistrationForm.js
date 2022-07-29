@@ -1,23 +1,32 @@
-import React from 'react';
-import { ImageUpload, DateInput } from '../components';
+import React, { useEffect } from 'react';
+import { ImageUpload } from '../components';
 import { Link } from "react-router-dom";
-import '../App.css';
 import useRegistration from '../hooks/useRegistration';
+import { formatPhoneNumber } from '../helpers/formatPhoneNumber';
+import { formatDateISO } from '../helpers/formatDates';
+import '../App.css';
 
 const RegistrationForm = ({ newUser, setNewUser, submitUser }) => {
     const { selectedFile, setSelectedFile } = useRegistration();
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        submitUser(selectedFile);
+    };
+
     return (
+        <>
         <div className="RegistrationForm">
             <h1>Register</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="input-field">
-                    <input type="text" required placeholder="Name" name="name" onChange={(event) => { event.target.value.length > 1 && setNewUser({ ...newUser, name: event.target.value})}} />
+                    <input type="text" required minlength="2" placeholder="Name" name="name" onChange={(event) => { event.target.value.length > 1 && setNewUser({ ...newUser, name: event.target.value})}} />
                 </div>
                 <div className="input-field">
-                    <DateInput newUser={newUser} setNewUser={setNewUser} />
+                    <input type="date"required max={formatDateISO(new Date())} onChange={(e) => {setNewUser({ ...newUser, dateOfBirth: e.target.value})}} className="date-input" />
                 </div>
                 <div className="input-field">
-                    <input type="text" required maxLength={14} placeholder="Phone (123) 456-7890" name="phone" onChange={(event) => setNewUser({ ...newUser, phone: event.target.value})} />
+                    <input type="text" required maxLength={14} placeholder="Phone (123) 456-7890" name="phone" value={newUser.phone} onChange={(event) => setNewUser({ ...newUser, phone: formatPhoneNumber(event.target.value)})} />
                 </div>
                 <div className="input-field">
                     <input type="email" required placeholder="Email Address" name="email" onChange={(event) => setNewUser({ ...newUser, email: event.target.value})} />
@@ -32,15 +41,23 @@ const RegistrationForm = ({ newUser, setNewUser, submitUser }) => {
                     <input type="text" required maxLength={2} placeholder="State" name="state"  onChange={(event) => setNewUser({ ...newUser, state: event.target.value})} />
                 </div>
                 <div className="input-field">
-                    <input type="text" required maxLength={5} placeholder="Zip Code" name="zip" onChange={(event) => setNewUser({ ...newUser, zip: event.target.value})} />
+                    <input type="number" required maxLength={5} placeholder="Zip Code" name="zip" onChange={(event) => setNewUser({ ...newUser, zip: event.target.value})} />
                 </div>
                 <div className="input-field">
                     <ImageUpload newUser={newUser} setNewUser={setNewUser} selectedFile={selectedFile} setSelectedFile={setSelectedFile} />
                 </div>
+                <button type="submit" className="submit-button">Submit</button>
             </form>
-            <button className="submit-button" onClick={() => submitUser(selectedFile)}>Submit</button>
-            <span className="account">Are you an admin? <Link className="login-link" to="/login">Login</Link></span>            
+            <div className='modal'>
+            <div className='success'>
+                <p>You have successfully registered!</p>
+            </div>
+            </div>
+            
+            <span className="account">Are you an admin? <Link className="login-link" to="/login">Login</Link></span>         
         </div>
+        </>
+        
     );
 }
 

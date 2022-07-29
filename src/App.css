@@ -16,6 +16,22 @@
     border-radius: 16px;
 }
 
+.modal {
+
+    background-color: lightgrey;
+
+    position: absolute;
+    top: 32px;
+    width: 100%;
+}
+
+.success {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10%;
+}
+
 form {
     width: 100%;
     display: flex;
@@ -32,12 +48,15 @@ form {
     width: 30%;
 }
 
+.date-input {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
 label {
     padding-top: 16px;
 }
 
 input {
-    border: none;
     height: 36px;
     width: 100%;
     border-radius: 8px;
