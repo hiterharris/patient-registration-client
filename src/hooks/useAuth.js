@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 const useAuth = () => {
     const [login, setLogin] = useState({ userName: '', password: ''});
-    const [session, setSession] = useState('');
+    const [session, setSession] = useState(window.localStorage.getItem('session') || '');
+    const [loginError, setLoginError] = useState(false);
     let navigate = useNavigate();
 
     const submitLogin = () => {
@@ -14,12 +15,14 @@ const useAuth = () => {
         };
         fetch('https://patient-registration-api.herokuapp.com/api/auth/login', requestOptions)
             .then(response => response.json())
-            .then(data => setSession(data?.OK?.sessionId))
-            .catch(error => console.log("Error adding user: ", error))
+            .then(data => window.localStorage.setItem('session', data?.OK?.sessionId))
+            .then(setTimeout(() => {navigate("../admin", { replace: true })}, 1000))
+            .catch(error => { setLoginError(true); console.log("Error on submitLogin: ", error )})
     };
 
     useEffect(() => {
-        session && setTimeout(() => navigate("../admin", { replace: true }), 1000)
+        console.log('session: ', session);
+        session && navigate("../admin", { replace: true });
     }, [session, navigate]);
 
     const submitLogout = () => {
@@ -30,12 +33,12 @@ const useAuth = () => {
         };
         fetch('https://patient-registration-api.herokuapp.com/api/auth/logout', requestOptions)
             .then(response => response.json())
-            .then(setSession({}))
+            .then(window.localStorage.removeItem('session'))
             .then(navigate("../login", { replace: true }))
             .catch(error => console.log("Error adding user: ", error))
     };
 
-    return { login, setLogin, submitLogin, submitLogout };
+    return { login, setLogin, submitLogin, submitLogout, loginError, session, setSession };
 }
 
 export default useAuth;

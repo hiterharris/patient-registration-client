@@ -16,20 +16,16 @@
     border-radius: 16px;
 }
 
-.modal {
-
-    background-color: lightgrey;
-
-    position: absolute;
-    top: 32px;
-    width: 100%;
-}
-
-.success {
+.Modal {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10%;
+    height: 60vh;
+}
+
+.check {
+    height: 64px;
 }
 
 form {
@@ -72,7 +68,7 @@ input {
     border: none;
     border-radius: 50px;
     background-color: #FD2E55;
-    margin-top: 32px;
+    margin: 16px 0;
     cursor: pointer;
 }
 
@@ -118,9 +114,14 @@ input {
     padding: 16px;
 }
 
-.login-link, .register-link {
+.login-link, .register-link, .logout-link {
     color: red;
     cursor: pointer;
+}
+
+.logout-link {
+    margin: 16px;
+    text-decoration: underline;
 }
 
 .ImageUpload {
@@ -140,6 +141,10 @@ input {
 
 .selected-file {
     width: 40%;
+}
+
+.access-denied {
+    text-align: center;
 }
 
 @media screen and (max-width: 1024px) {

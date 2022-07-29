@@ -16,6 +16,7 @@ const useRegistration = () => {
     });
     const [progress, setProgress] = useState(0);
     const [selectedFile, setSelectedFile] = useState();
+    const [displaySuccessModal, setDisplaySuccessModal] = useState(false);
 
     const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
     const REGION = process.env.REACT_APP_REGION;
@@ -44,7 +45,6 @@ const useRegistration = () => {
             })
             .send((err) => {
                 if (err) console.log(err)
-                else console.log(progress)
             })
     };
 
@@ -64,19 +64,17 @@ const useRegistration = () => {
         };
         fetch('https://patient-registration-api.herokuapp.com/api/users/add', requestOptions)
             .then(response => response.json())
-            .then(data => console.log('POST response: ', data))
-            .then(setTimeout(() => window.location.reload(false), 2000))
+            .then(data => data)
             .catch(error => console.log("Error adding user: ", error))
     };
 
     const deleteUser = (id) => {
         fetch(`https://patient-registration-api.herokuapp.com/api/users/remove/${id}`, { method: 'DELETE' })
-            .then(() => {})
+            .then(() => { window.location.reload(false) })
             .catch(error => console.log("Error deleting user: ", error))
-        setTimeout(() => window.location.reload(false), 2000);
     };
 
-    return { newUser, setNewUser, submitUser, deleteUser, users, selectedFile, setSelectedFile }
+    return { newUser, setNewUser, submitUser, deleteUser, users, selectedFile, setSelectedFile, displaySuccessModal, setDisplaySuccessModal }
 }
 
 export default useRegistration;
